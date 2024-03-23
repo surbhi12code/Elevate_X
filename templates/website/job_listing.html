@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+<section>
+    <div class="p-5 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h2 class="display-5-fw-bold">ElevateX Jobs.get Hired Quickly</h2>
+            <p class="col-md-8 fs-5 mt-3">
+                All available jobs
+            </p>
+        </div>
+    </div>
+</section>
+<div class="container"></div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if jobs %}
+    {% for job in jobs %}
+    <div class="col">
+        <div class="card  ">
+            <div class="card-body">
+                <h5 class="card-title">{{job.title}}</h5>
+                <p class="card-text"> Job Location:{{ job.location}}</p>
+
+                <p class="card-text"> Salary:{{job.salary|intcomma}}</p>
+                <p class="card-text"> Posted by :{{ job.company}}</p>
+                <a class="btn btn-primary btn-sm" href="{% url 'job-details' job.pk %}">View-details</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">created {{ job.timestamp|naturaltime}}</small>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<br>
+{% endblock content %}
