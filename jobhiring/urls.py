@@ -28,7 +28,8 @@ urlpatterns = [
     path('resume/',include('resume.urls')),
     path('job/',include('job.urls')),
     path('quiz/',include('quiz.urls')),
-    path('base/',include('base.urls'))
+    path('base/',include('base.urls')),
+    path('certificate/',include('certificate.urls'))
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

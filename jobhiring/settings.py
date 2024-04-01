@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_filters',
     'quiz',
-    'base'
+    'base',
+    'certificate'
 ]
 
 MIDDLEWARE = [

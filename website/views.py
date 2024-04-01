@@ -13,6 +13,9 @@ def getHired(request):
 def doquiz(request):
     return render(request,'base/welcome.html')
 
+def get_certified(request):
+    return render(request,'certificate/welcome.html')
+
 def job_listing(request,):
  
     jobs=Job.objects.filter(is_available=True).order_by('-timestamp')

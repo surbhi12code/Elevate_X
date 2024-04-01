@@ -10,6 +10,7 @@ from django.db.models import Q
 from quiz.models import QuizSubmission
 from django.contrib import messages
 from users.models import User
+from certificate.views import generate_certificate
 
 # Create your views here.
 
@@ -73,6 +74,9 @@ def quiz_view(request, quiz_id):
         # save the new quiz submission
         submission = QuizSubmission(user=request.user, quiz=quiz, score=score)
         submission.save()
+        
+        if score >= 75:
+            generate_certificate(request, user=request.user, quiz_title=quiz.title, total_score=score)
 
         # show the result in message
         messages.success(request,f"Quiz Submitted Successfully. You got {score} out of {total_questions}")

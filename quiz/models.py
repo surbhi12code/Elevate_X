@@ -8,7 +8,7 @@ from django.db.models import Sum
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
-
+from certificate.models import Certificate 
 
 class Category(models.Model):
     name = models.CharField(max_length=15)
@@ -117,5 +117,7 @@ def update_leaderboard():
         user_rank.rank = rank
         user_rank.total_score = total_score
         user_rank.save()
-
+        
+        
+        
         rank += 1
